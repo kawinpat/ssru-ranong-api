@@ -65,6 +65,16 @@ const methods = {
             return res.send({ error: "Error discuss Answer" });
         }
     },
+    async deleteDiscuss(req, res) {
+        let _id = req.body._id;
+        try {
+            await dbtalkingCol.deleteOne({ _id: ObjectId(`${_id}`) });
+            return res.status(200).send();
+        } catch (error) {
+            console.log("Error deleteDiscuss :", error);
+            return res.send({ error: "Error saveNewsPost" });
+        }
+    },
 };
 
 module.exports = {...methods };

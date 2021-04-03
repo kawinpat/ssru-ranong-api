@@ -11,5 +11,6 @@ router.post('/one', controllers.getTalkingOne);
 router.post('/post', controllers.postNewTalking);
 router.post('/discuss/post', controllers.postDiscussAnswer);
 router.post('/discuss/answer', controllers.getDiscussAnswer);
+router.post('/discuss/delete', controllers.deleteDiscuss);
 
 module.exports = router
