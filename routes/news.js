@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/all', controllers.getNewsAll)
+router.get('/home', controllers.getNewsHome)
 router.post('/post', controllers.saveNewsPost)
 router.post('/one', controllers.getNewsOne)
 router.post('/delete', controllers.deleteNews)
