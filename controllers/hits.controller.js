@@ -24,9 +24,9 @@ const methods = {
                 .aggregate([
                     { $match: { status: "hot" } },
                     { $project: { title: 1, titleImg: 1, date: 1, _id: 1 } },
+                    { $sort: { date: -1 } },
                     { $limit: 4 },
                 ])
-                .sort({ date: -1 })
                 .toArray();
         } catch (error) {
             console.log("Query 'getNewsAll' is failure", error);
