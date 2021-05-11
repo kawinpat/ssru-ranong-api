@@ -14,6 +14,22 @@ const methods = {
             return res.status(200).send(data);
         }
     },
+    async getNewsHome(req, res) {
+        try {
+            data = await dbnewsCol
+                .aggregate([
+                    { $project: { title: 1, titleImg: 1, date: 1, _id: 1 } },
+                    { $limit: 4 },
+                ])
+                .sort({ date: -1 })
+                .toArray();
+        } catch (error) {
+            console.log("Query 'getNewsHome' is failure", error);
+            return res.status(500).send("Query 'getNewsHome' is failure");
+        } finally {
+            return res.status(200).send(data);
+        }
+    },
     async getNewsOne(req, res) {
         let _id = req.body._id;
         try {
@@ -25,7 +41,7 @@ const methods = {
                 .toArray();
         } catch (error) {
             console.log("Query 'getNewsOne' is failure", error);
-            return res.status(500).send("Query 'getNewsAll' is failure");
+            return res.status(500).send("Query 'getNewsOne' is failure");
         } finally {
             return res.status(200).send(data);
         }
