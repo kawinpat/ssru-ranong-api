@@ -6,6 +6,7 @@ const mongodUrl = process.env.DATABASE_URL;
 // Database
 const connectMongodb = (app) => {
     const port = process.env.PORT;
+    console.log("Start connect...");
     mongodb.MongoClient.connect(mongodUrl, {
             poolSize: 10,
             useNewUrlParser: true,
